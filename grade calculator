@@ -1,0 +1,58 @@
+import java.util.*;
+public class gradecal {
+    static float marks(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your marks in Maths out of 100");
+        float maths = sc.nextInt();
+        System.out.println("Enter your marks in English out of 100");
+        float eng = sc.nextInt();
+        System.out.println("Enter your marks in Science out of 100");
+        float sci = sc.nextInt();
+        System.out.println("Enter your marks in Hindi out of 100");
+        float hindi = sc.nextInt();
+        float total = maths+eng+sci+hindi;
+        System.out.println("Total marks you scored: "+total+"/400");
+        float average = total/4;
+        System.out.println("Your average percentage is "+average+"%");
+        return average;
+    }
+
+    static void grade(float percentage){
+        if (percentage >= 95){
+            System.out.println("Your grade is A1");
+        }
+        if (percentage >= 85 && percentage<95){
+            System.out.println("Your grade is A2");
+        }
+        if (percentage >= 75 && percentage<85){
+            System.out.println("Your grade is B1");
+        }
+        if (percentage >= 70 && percentage<75){
+            System.out.println("Your grade is B2");
+        }
+        if (percentage >= 60 && percentage<70){
+            System.out.println("Your grade is C1");
+        }
+        if (percentage >= 55 && percentage<60){
+            System.out.println("Your grade is C2");
+        }
+        if (percentage >= 50 && percentage<55){
+            System.out.println("Your grade is D1");
+        }
+        if (percentage >= 45 && percentage<50){
+            System.out.println("Your grade is D2");
+        }
+        if (percentage >= 33 && percentage<45){
+            System.out.println("Your grade is E");
+        }
+        if (percentage<33){
+            System.out.println("Your grade is F\nYou have failed in the examination");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        float percentage = marks();
+        grade(percentage);
+
+    }
+}
