@@ -1,0 +1,77 @@
+import java.util.*;
+
+class atminterface{
+    public void inter(){
+        System.out.println("Welcome to the STATE BANK OF INDIA ATM\n" +
+                "Kindly choose from the below services available:-\n" +
+                "1.Check Balance\n" +
+                "2.Withdraw Cash\n" +
+                "3.Deposit Cash\n" +
+                "Press 1,2 or 3 according to the services available");
+    }
+}
+class bankacc{
+    int balance;
+}
+public class ATM {
+    static int availbal(){
+        Random rn = new Random();
+        int bal = rn.nextInt(0,500000);
+        System.out.println("Your balance is "+bal);
+        return bal;
+    }
+    static void checkbal(int bal){
+        if (bal<5000){
+            System.out.println("Your available balance is Rs"+bal+" which is1 less than the minimum limit of Rs5000");
+        }
+        else {
+            System.out.println("Your available balance is Rs"+bal);
+        }
+    }
+    static int withdraw(int bal){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How much amount do you want to withdraw?");
+        int wd = sc.nextInt();
+        if (wd > bal){
+            System.out.println("You do not have sufficient balance");
+        }
+        else {
+            bal = bal - wd;
+            System.out.println("TRANSACTION SUCCESSFUL");
+        }
+        return bal;
+    }
+    static int deposit(int bal){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How much amount do you want to deposit?");
+        int dp = sc.nextInt();
+        bal = bal + dp;
+        System.out.println("TRANSACTION SUCCESSFUL");
+        return bal;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        bankacc p1 = new bankacc();
+        atminterface sbi = new atminterface();
+        p1.balance=availbal();
+        char choice;
+        do {
+            sbi.inter();
+            int service = sc.nextInt();
+            switch (service) {
+                case 1:
+                    checkbal(p1.balance);
+                    break;
+                case 2:
+                    p1.balance = withdraw(p1.balance);
+                    break;
+                case 3:
+                    p1.balance = deposit(p1.balance);
+                    break;
+            }
+            System.out.println("Do you want to make another transaction? Y/N");
+            choice = sc.next().charAt(0);
+        }while(choice == 'Y' || choice == 'y');
+
+    }
+}
